@@ -5,7 +5,7 @@ package ci.test;
 
 public class App {
     public String getGreeting() {
-        return "Hello World!";
+        return "Hello World :3";
     }
 
     public static void main(String[] args) {
