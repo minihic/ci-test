@@ -9,7 +9,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/minihic/ci-test.git'
+                git branch: 'main', url: 'https://github.com/minihic/ci-test.git'
             }
         }
 
@@ -30,22 +30,27 @@ pipeline {
                 sh 'gradle testClasses'
             }
 
-            post failure {
-                echo 'Test failed'
-            }
+            post {
+                failure {
+                    echo 'Test failed'
+                }
 
-            post success {
-                echo 'Test passed'
+                success {
+                    echo 'Test passed'
+                }
             }
         }
         
     }
 
-    post failure {
-        echo 'Pipeline failed'
-    }
+    post {
+        failure {
+            echo 'Pipeline failed'
+        }
 
-    post success {
-        echo 'Pipeline passed'
+        success {
+            echo 'Pipeline passed'
+        }
     }
+    
 }
