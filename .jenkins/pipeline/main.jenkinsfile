@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    tools {
+        gradle 'Gradle 8.4'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/minihic/ci-test.git'
+            }
+        }
+
+        stage('Clean') {
+            steps {
+                sh 'gradle clean'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'gradle build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'gradle testClasses'
+            }
+
+            post failure {
+                echo 'Test failed'
+            }
+
+            post success {
+                echo 'Test passed'
+            }
+        }
+        
+    }
+
+    post failure {
+        echo 'Pipeline failed'
+    }
+
+    post success {
+        echo 'Pipeline passed'
+    }
+}
