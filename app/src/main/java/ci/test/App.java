@@ -6,7 +6,7 @@ package ci.test;
 public class App {
     public String getGreeting() {
         // some comments
-        return "Hello World !";
+        return "Hello World ;
     }
 
     public static void main(String[] args) {
