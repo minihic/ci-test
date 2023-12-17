@@ -4,10 +4,10 @@
 package ci.test;
 
 public class App {
-    // public String getGreeting() {
-    //     // some comments
-    //     return "Hello World !";
-    // }
+    public String getGreeting() {
+        // some comments
+        return "Hello World !";
+    }
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
